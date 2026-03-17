@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>بصمة ديزاين | تصميم مواقع احترافية</title>
+    <meta name="description" content="تصميم مواقع احترافية وسريعة تناسب شغلك وتكبره أونلاين مع شريف - بصمة ديزاين.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  </head>
+  <body class="bg-[#050505] text-white antialiased font-['Cairo'] overflow-x-hidden selection:bg-purple-600 selection:text-white">
+    
+    <!-- خلفية متحركة -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none">
+      <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
+      <div class="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px] mix-blend-screen animate-pulse" style="animation-delay: 2s;"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
+    </div>
+
+    <!-- زر واتساب العائم -->
+    <a href="https://wa.me/201013459959" target="_blank" class="fixed bottom-6 right-6 z-50 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(34,197,94,0.4)] hover:scale-110 transition-transform duration-300 group">
+      <i class="ri-whatsapp-line text-3xl text-white"></i>
+      <span class="absolute right-full mr-4 bg-white text-black px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg pointer-events-none">تواصل معي واتساب</span>
+    </a>
+
+    <!-- Admin Navigation Overlay -->
+    <div id="admin-trigger" class="fixed bottom-6 left-6 z-50 w-12 h-12 bg-white/5 backdrop-blur-md rounded-full border border-white/10 flex items-center justify-center cursor-pointer hover:bg-white/10 transition-all opacity-30 hover:opacity-100">
+      <i class="ri-settings-4-line text-white/50"></i>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app"></div>
+
+    <!-- Supabase JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Firebase SDK -->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDLtJBvw327412AhWb1Bve9HuPYtkfnr4Q",
+        authDomain: "sherif-ceb45.firebaseapp.com",
+        projectId: "sherif-ceb45",
+        storageBucket: "sherif-ceb45.firebasestorage.app",
+        messagingSenderId: "707625325547",
+        appId: "1:707625325547:web:60c19572a75087b4803fae",
+        measurementId: "G-4DNPDQ53P3"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+    
+    <script type="module" src="/src/js/script.js"></script>
+    <script type="module">
+        import '/src/css/styles.css'
+    </script>
+  </body>
+</html>

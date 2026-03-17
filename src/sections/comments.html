@@ -1,0 +1,39 @@
+<section id="comments" class="py-24 relative overflow-hidden bg-romantic-dark">
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-4xl mx-auto text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">آراء <span class="text-gradient-romantic">المعجبين</span></h2>
+      <p class="text-gray-400">سيب بصمتك وشاركنا رأيك في هديتك</p>
+    </div>
+
+    <div class="max-w-2xl mx-auto mb-16">
+      <form id="comment-form" class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-4">
+          <input type="text" id="comment-name" placeholder="اسمك" required 
+            class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-romantic-primary transition-all outline-none">
+          <div class="flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/5 border border-white/10">
+            <span class="text-gray-400 text-sm">تقييمك:</span>
+            <div class="flex gap-1 text-romantic-gold" id="rating-stars">
+              <i class="ri-star-line cursor-pointer hover:scale-110 transition-transform" data-value="1"></i>
+              <i class="ri-star-line cursor-pointer hover:scale-110 transition-transform" data-value="2"></i>
+              <i class="ri-star-line cursor-pointer hover:scale-110 transition-transform" data-value="3"></i>
+              <i class="ri-star-line cursor-pointer hover:scale-110 transition-transform" data-value="4"></i>
+              <i class="ri-star-line cursor-pointer hover:scale-110 transition-transform" data-value="5"></i>
+            </div>
+            <input type="hidden" id="comment-rating" value="5">
+          </div>
+        </div>
+        <textarea id="comment-text" placeholder="اكتب تعليقك هنا..." required
+          class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-romantic-primary transition-all outline-none min-h-[120px]"></textarea>
+        <button type="submit" 
+          class="w-full py-4 bg-gradient-to-r from-romantic-primary to-romantic-accent text-white font-bold rounded-2xl shadow-lg shadow-romantic-primary/20 hover:scale-[1.02] transition-all">
+          إرسال التعليق ✨
+        </button>
+      </form>
+    </div>
+
+    <div id="comments-list" class="grid gap-6">
+      <!-- Comments will be injected here -->
+      <div class="text-center text-gray-500 py-10" id="no-comments">لا توجد تعليقات بعد. كن أول من يعلق!</div>
+    </div>
+  </div>
+</section>

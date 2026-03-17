@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply overflow-x-hidden;
+  }
+  body {
+    @apply antialiased bg-romantic-dark text-white font-cairo selection:bg-romantic-primary selection:text-white overflow-x-hidden w-full;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(190, 18, 60, 0.08) 0%, transparent 25%), 
+      radial-gradient(circle at 85% 30%, rgba(251, 113, 133, 0.05) 0%, transparent 25%);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-romantic {
+    @apply relative px-8 py-3 overflow-hidden rounded-full font-bold text-white transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg shadow-romantic-primary/30;
+    background: linear-gradient(45deg, #be123c, #fb7185);
+  }
+  
+  .btn-romantic-outline {
+    @apply relative px-8 py-3 rounded-full font-bold text-white border border-white/10 hover:bg-white/5 transition-all duration-300 hover:border-romantic-accent/50;
+  }
+
+  .card-romantic {
+    @apply bg-card-gradient backdrop-blur-md border border-romantic-border rounded-3xl transition-all duration-500 hover:border-romantic-accent/40 hover:shadow-xl hover:shadow-romantic-primary/10;
+  }
+
+  .text-gradient-romantic {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-romantic-accent via-white to-romantic-gold;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  
+  .text-shadow-glow {
+    text-shadow: 0 0 30px rgba(251, 113, 133, 0.4);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: #120814;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(190, 18, 60, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #be123c;
+  transition: background-color 0.3s;
+}
+
+/* Mobile Responsive Fixes */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h1 {
+    font-size: 2.25rem;
+  }
+  
+  h2 {
+    font-size: 1.875rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  .btn-romantic {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    font-size: 0.875rem;
+  }
+  
+  .btn-romantic-outline {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    font-size: 0.875rem;
+  }
+  
+  .card-romantic {
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+  
+  .fixed.top-0 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .text-5xl {
+    font-size: 1.875rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.5rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.25rem;
+  }
+  
+  .py-24 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  .py-16 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .mb-16 {
+    margin-bottom: 3rem;
+  }
+  
+  .gap-12 {
+    gap: 2rem;
+  }
+  
+  .gap-8 {
+    gap: 1.5rem;
+  }
+  
+  .gap-6 {
+    gap: 1rem;
+  }
+  
+  .grid-cols-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Small mobile fixes */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  h1 {
+    font-size: 1.875rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .text-4xl {
+    font-size: 1.5rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.25rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.125rem;
+  }
+  
+  .btn-romantic {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .btn-romantic-outline {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .card-romantic {
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+  }
+  
+  .py-16 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .py-12 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .mb-12 {
+    margin-bottom: 2rem;
+  }
+  
+  .gap-8 {
+    gap: 1rem;
+  }
+  
+  .gap-6 {
+    gap: 0.75rem;
+  }
+  
+  .gap-4 {
+    gap: 0.5rem;
+  }
+}

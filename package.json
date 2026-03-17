@@ -1,0 +1,19 @@
+{
+  "name": "premium-web-project",
+  "version": "1.0.0",
+  "description": "Premium Web Experience with Tailwind & GSAP",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.1.4"
+  }
+}
