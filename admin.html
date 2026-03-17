@@ -1,0 +1,224 @@
+<section id="admin" class="py-24 relative overflow-hidden bg-romantic-dark min-h-screen">
+  <div class="container mx-auto px-6 relative z-10">
+    <div id="admin-login" class="max-w-md mx-auto bg-white/5 p-10 rounded-[2.5rem] border border-white/10 backdrop-blur-xl shadow-2xl">
+      <div class="text-center mb-8">
+        <div class="w-16 h-16 bg-romantic-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4 text-romantic-primary">
+          <i class="ri-admin-line text-3xl"></i>
+        </div>
+        <h2 class="text-2xl font-black text-white">لوحة التحكم</h2>
+        <p class="text-gray-500 text-sm mt-2">يرجى تسجيل الدخول للمتابعة</p>
+      </div>
+      <form id="admin-login-form" class="space-y-4">
+        <input type="password" id="admin-password" placeholder="كلمة المرور" required 
+          class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-romantic-primary transition-all outline-none text-center">
+        <button type="submit" 
+          class="w-full py-4 bg-romantic-primary text-white font-bold rounded-2xl shadow-lg shadow-romantic-primary/20 hover:scale-[1.02] transition-all">
+          دخول 🔐
+        </button>
+      </form>
+    </div>
+
+    <div id="admin-dashboard" class="hidden">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+        <div>
+          <h2 class="text-3xl font-black text-white">مرحباً شريف 👋</h2>
+          <p class="text-gray-400">تحكم كامل في موقعك من هنا</p>
+        </div>
+        <button id="admin-logout" class="px-6 py-2 bg-white/5 border border-white/10 text-white rounded-full hover:bg-red-500/20 hover:border-red-500/30 transition-all">
+          تسجيل الخروج
+        </button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex gap-4 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+        <button onclick="switchAdminTab('comments-tab')" class="admin-tab-btn active px-6 py-3 rounded-2xl bg-romantic-primary text-white font-bold whitespace-nowrap">التعليقات</button>
+        <button onclick="switchAdminTab('about-tab')" class="admin-tab-btn px-6 py-3 rounded-2xl bg-white/5 text-gray-400 font-bold whitespace-nowrap">من أنا</button>
+        <button onclick="switchAdminTab('projects-tab')" class="admin-tab-btn px-6 py-3 rounded-2xl bg-white/5 text-gray-400 font-bold whitespace-nowrap">أعمالي</button>
+        <button onclick="switchAdminTab('reviews-tab')" class="admin-tab-btn px-6 py-3 rounded-2xl bg-white/5 text-gray-400 font-bold whitespace-nowrap">المصداقية</button>
+        <button onclick="switchAdminTab('happy-moments-tab')" class="admin-tab-btn px-6 py-3 rounded-2xl bg-white/5 text-gray-400 font-bold whitespace-nowrap">لحظات فرح</button>
+        <button onclick="switchAdminTab('content-tab')" class="admin-tab-btn px-6 py-3 rounded-2xl bg-white/5 text-gray-400 font-bold whitespace-nowrap">إدارة عامة</button>
+      </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+      <div class="p-6 md:p-8 rounded-3xl bg-white/5 border border-white/10">
+        <span class="text-gray-500 text-xs md:text-sm block mb-2">إجمالي التعليقات</span>
+        <span class="text-2xl md:text-3xl font-black text-white" id="total-comments-count">0</span>
+      </div>
+      <div class="p-6 md:p-8 rounded-3xl bg-white/5 border border-white/10">
+        <span class="text-gray-500 text-xs md:text-sm block mb-2">تعليقات جديدة</span>
+        <span class="text-2xl md:text-3xl font-black text-romantic-accent" id="new-comments-count">0</span>
+      </div>
+      <div class="p-6 md:p-8 rounded-3xl bg-white/5 border border-white/10">
+        <span class="text-gray-500 text-xs md:text-sm block mb-2">تقييم الموقع</span>
+        <span class="text-2xl md:text-3xl font-black text-romantic-gold">4.9/5</span>
+      </div>
+    </div>
+
+    <div class="bg-white/5 rounded-[2.5rem] border border-white/10 overflow-hidden">
+      <div id="admin-comments-list" class="divide-y divide-white/5">
+        <!-- Admin comments will be injected here -->
+      </div>
+    </div>
+
+      <!-- About Management Tab -->
+      <div id="about-tab" class="admin-content-section hidden">
+        <div class="p-8 bg-white/5 rounded-[2.5rem] border border-white/10 max-w-2xl">
+          <h3 class="text-xl font-bold text-white mb-6">تعديل "من أنا"</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="text-sm text-gray-500 block mb-2">النص التعريفي</label>
+              <textarea id="admin-about-text" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm outline-none focus:border-romantic-primary min-h-[150px]"></textarea>
+            </div>
+            <button onclick="updateAboutContent()" class="w-full py-3 bg-romantic-primary text-white font-bold rounded-xl">حفظ التغييرات</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects Management Tab -->
+      <div id="projects-tab" class="admin-content-section hidden">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+          <div class="p-6 md:p-8 rounded-3xl bg-white/5 border border-white/10">
+            <span class="text-gray-500 text-xs md:text-sm block mb-2">إجمالي التعليقات</span>
+            <span class="text-2xl md:text-3xl font-black text-white" id="total-comments-count">0</span>
+          </div>
+          <div class="p-6 md:p-8 rounded-3xl bg-white/5 border border-white/10">
+            <span class="text-gray-500 text-xs md:text-sm block mb-2">تعليقات جديدة</span>
+            <span class="text-2xl md:text-3xl font-black text-romantic-accent" id="new-comments-count">0</span>
+          </div>
+          <div class="p-6 md:p-8 rounded-3xl bg-white/5 border border-white/10">
+            <span class="text-gray-500 text-xs md:text-sm block mb-2">تقييم الموقع</span>
+            <span class="text-2xl md:text-3xl font-black text-romantic-gold">4.9/5</span>
+          </div>
+        </div>
+        <div class="p-8 bg-white/5 rounded-[2.5rem] border border-white/10">
+          <h3 class="text-xl font-bold text-white mb-6">إدارة أعمالي</h3>
+          <div id="admin-projects-list" class="grid gap-4 mb-8">
+            <!-- Project items will be injected here -->
+          </div>
+          <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+            <h4 class="text-white font-bold mb-4 text-sm">إضافة مشروع جديد</h4>
+            <div class="grid gap-4">
+              <input type="text" id="new-project-title" placeholder="عنوان المشروع" class="w-full px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm">
+              <input type="text" id="new-project-image" placeholder="رابط الصورة" class="w-full px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm">
+              <input type="text" id="new-project-link" placeholder="رابط المعاينة" class="w-full px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm">
+              <button onclick="addNewProject()" class="py-3 bg-romantic-accent text-white font-bold rounded-xl">إضافة</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reviews Management Tab -->
+      <div id="reviews-tab" class="admin-content-section hidden">
+        <div class="p-8 bg-white/5 rounded-[2.5rem] border border-white/10">
+          <h3 class="text-xl font-bold text-white mb-6">إدارة المصداقية (سكرين شوتس)</h3>
+          <div id="admin-reviews-list" class="grid md:grid-cols-4 gap-4 mb-8">
+            <!-- Review images will be injected here -->
+          </div>
+          <div class="flex gap-2">
+            <input type="text" id="new-review-image" placeholder="رابط سكرين شوت جديد" class="flex-1 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm">
+            <button onclick="addNewReview()" class="px-6 py-2 bg-romantic-gold text-black font-bold rounded-xl">إضافة</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Happy Moments Management Tab -->
+      <div id="happy-moments-tab" class="admin-content-section hidden">
+        <div class="p-8 bg-white/5 rounded-[2.5rem] border border-white/10">
+          <h3 class="text-xl font-bold text-white mb-6">إدارة لحظات فرح (فيديوهات/صور)</h3>
+          <div id="admin-moments-list" class="grid md:grid-cols-4 gap-4 mb-8">
+            <!-- Moment items will be injected here -->
+          </div>
+          <div class="grid gap-4 p-6 bg-white/5 rounded-2xl">
+            <input type="text" id="new-moment-url" placeholder="رابط الصورة أو الفيديو" class="w-full px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm">
+            <button onclick="addNewMoment()" class="py-3 bg-romantic-primary text-white font-bold rounded-xl">إضافة للحظات فرح</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="content-tab" class="admin-content-section hidden">
+        <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+          <!-- Site General Settings -->
+          <div class="p-6 md:p-8 bg-white/5 rounded-[2.5rem] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <i class="ri-global-line text-romantic-primary"></i> إعدادات الموقع العامة
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="text-sm text-gray-500 block mb-2">اسم الموقع</label>
+                <input type="text" id="admin-site-title" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm outline-none focus:border-romantic-primary">
+              </div>
+              <div>
+                <label class="text-sm text-gray-500 block mb-2">رابط واتساب (رقم الهاتف)</label>
+                <input type="text" id="admin-whatsapp" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm outline-none focus:border-romantic-primary">
+              </div>
+              <div>
+                <label class="text-sm text-gray-500 block mb-2">رابط تيك توك</label>
+                <input type="text" id="admin-tiktok" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm outline-none focus:border-romantic-primary">
+              </div>
+              <button onclick="updateGeneralSettings()" class="w-full py-3 bg-romantic-primary text-white font-bold rounded-xl">حفظ الإعدادات العامة</button>
+            </div>
+          </div>
+
+          <!-- Update Songs -->
+          <div class="p-8 bg-white/5 rounded-[2.5rem] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <i class="ri-music-2-line text-romantic-gold"></i> تحديث الموسيقى
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="text-sm text-gray-500 block mb-2">رابط الأغنية (MP3)</label>
+                <input type="text" id="admin-song-url" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm outline-none focus:border-romantic-gold">
+              </div>
+              <button onclick="updateWebsiteContent('song')" class="w-full py-3 bg-romantic-gold text-black font-bold rounded-xl">حفظ التعديل</button>
+            </div>
+          </div>
+
+          <!-- Update Images -->
+          <div class="p-8 bg-white/5 rounded-[2.5rem] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <i class="ri-image-line text-romantic-primary"></i> إضافة صوره
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="text-sm text-gray-500 block mb-2">رابط الصورة</label>
+                <input type="text" id="admin-image-url" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm outline-none focus:border-romantic-primary">
+              </div>
+              <button onclick="updateWebsiteContent('image')" class="w-full py-3 bg-romantic-primary text-white font-bold rounded-xl">إضافة للصورة</button>
+            </div>
+          </div>
+
+          <!-- Update Links -->
+          <div class="p-8 bg-white/5 rounded-[2.5rem] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <i class="ri-link text-romantic-accent"></i> تعديل لينكات الموقع
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="text-sm text-gray-500 block mb-2">لينك صفحة تفاصيل الهدية</label>
+                <input type="text" id="admin-gift-link" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm outline-none focus:border-romantic-accent">
+              </div>
+              <button onclick="updateWebsiteContent('link')" class="w-full py-3 bg-romantic-accent text-white font-bold rounded-xl">حفظ اللينك</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Tab -->
+      <div id="settings-tab" class="admin-content-section hidden">
+        <div class="p-8 bg-white/5 rounded-[2.5rem] border border-white/10 max-w-2xl">
+          <h3 class="text-xl font-bold text-white mb-6">إعدادات عامة</h3>
+          <div class="space-y-6">
+            <div class="flex items-center justify-between p-4 bg-white/5 rounded-2xl">
+              <div>
+                <p class="text-white font-bold">وضع الصيانة</p>
+                <p class="text-xs text-gray-500">إغلاق الموقع مؤقتاً للتعديل</p>
+              </div>
+              <input type="checkbox" class="w-10 h-5 bg-gray-600 rounded-full appearance-none checked:bg-romantic-primary transition-all cursor-pointer">
+            </div>
+            <button class="w-full py-4 border border-romantic-primary/30 text-romantic-primary font-bold rounded-2xl hover:bg-romantic-primary/10 transition-all">حفظ الإعدادات</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
